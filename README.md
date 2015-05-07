@@ -3,12 +3,12 @@ DoctrineSetTypeBundle
 
 The `DoctrineSetTypeBundle` provides support MySQL SET type for Doctrine2 in your Symfony2 application.
 
-[![Latest Stable Version](https://poser.pugx.org/okapon/doctrine-set-type-bundle/v/stable.svg)](https://packagist.org/packages/okapon/doctrine-set-type-bundle)
+[![Latest Stable Version](https://poser.pugx.org/raksul/doctrine-set-type-bundle/v/stable.svg)](https://packagist.org/packages/raksul/doctrine-set-type-bundle)
 [![Build Status](https://travis-ci.org/raksul/DoctrineSetTypeBundle.svg?branch=master)](https://travis-ci.org/raksul/DoctrineSetTypeBundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/raksul/DoctrineSetTypeBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/raksul/DoctrineSetTypeBundle/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/raksul/DoctrineSetTypeBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/raksul/DoctrineSetTypeBundle/?branch=master)
 
-[![License](https://poser.pugx.org/okapon/doctrine-set-type-bundle/license.svg)](https://packagist.org/packages/okapon/doctrine-set-type-bundle)
+[![License](https://poser.pugx.org/raksul/doctrine-set-type-bundle/license.svg)](https://packagist.org/packages/raksul/doctrine-set-type-bundle)
 
 ## Features
 
@@ -33,7 +33,7 @@ The `DoctrineSetTypeBundle` provides support MySQL SET type for Doctrine2 in you
 Using composer
 
 ```
-$ composer require okapon/doctrine-set-type-bundle "0.2.0"
+$ composer require raksul/doctrine-set-type-bundle "0.2.0"
 ```
 
 ## Step 2: Enable the Bundle
@@ -218,7 +218,7 @@ And also You can validate your type by adding the following annotation.
 
 Input `null` to the Second argument.
 
-[SetTypeGuesser](https://github.com/okapon/DoctrineSetTypeBundle/blob/master/Form/Guess/SetTypeGuesser.php) render the field as checkboxes.
+[SetTypeGuesser](https://github.com/raksul/DoctrineSetTypeBundle/blob/master/Form/Guess/SetTypeGuesser.php) render the field as checkboxes.
 
 ```php
 $builder->add('groups', null, [

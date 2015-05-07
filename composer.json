@@ -1,9 +1,9 @@
 {
-    "name": "okapon/doctrine-set-type-bundle",
+    "name": "raksul/doctrine-set-type-bundle",
     "type": "symfony-bundle",
     "description": "Provides support of MySQL SET type for Doctrine2 in Symfony2 applications.",
     "keywords": ["bundle", "symfony", "doctrine", "MySQL", "SET", "type", "DBAL"],
-    "homepage": "https://github.com/okapon/DoctrineSetTypeBundle",
+    "homepage": "https://github.com/raksul/DoctrineSetTypeBundle",
     "license": "MIT",
     "authors": [
         {
