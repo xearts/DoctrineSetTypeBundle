@@ -33,7 +33,7 @@ The `DoctrineSetTypeBundle` provides support MySQL SET type for Doctrine2 in you
 Using composer
 
 ```
-$ composer require raksul/doctrine-set-type-bundle "0.2.0"
+$ composer require raksul/doctrine-set-type-bundle "1.0.0"
 ```
 
 ## Step 2: Enable the Bundle
