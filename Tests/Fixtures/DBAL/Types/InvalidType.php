@@ -1,6 +1,6 @@
 <?php
 
-namespace Okapon\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types;
+namespace Raksul\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;

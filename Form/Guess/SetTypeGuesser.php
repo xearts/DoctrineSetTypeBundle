@@ -1,13 +1,13 @@
 <?php
 
-namespace Okapon\DoctrineSetTypeBundle\Form\Guess;
+namespace Raksul\DoctrineSetTypeBundle\Form\Guess;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Bridge\Doctrine\Form\DoctrineOrmTypeGuesser;
 use Symfony\Component\Form\Guess\Guess;
 use Symfony\Component\Form\Guess\TypeGuess;
-use Okapon\DoctrineSetTypeBundle\DBAL\Types\AbstractSetType;
-use Okapon\DoctrineSetTypeBundle\Exception\InvalidClassSpecifiedException;
+use Raksul\DoctrineSetTypeBundle\DBAL\Types\AbstractSetType;
+use Raksul\DoctrineSetTypeBundle\Exception\InvalidClassSpecifiedException;
 
 /**
  * SetTypeGuesser

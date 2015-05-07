@@ -1,10 +1,10 @@
 <?php
 
-namespace Okapon\DoctrineSetTypeBundle\Tests\Validator;
+namespace Raksul\DoctrineSetTypeBundle\Tests\Validator;
 
-use Okapon\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType;
-use Okapon\DoctrineSetTypeBundle\Validator\Constraints\SetType;
-use Okapon\DoctrineSetTypeBundle\Validator\Constraints\SetTypeValidator;
+use Raksul\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType;
+use Raksul\DoctrineSetTypeBundle\Validator\Constraints\SetType;
+use Raksul\DoctrineSetTypeBundle\Validator\Constraints\SetTypeValidator;
 use Symfony\Component\Validator\Context\ExecutionContext;
 use Phake;
 use Symfony\Component\Validator\Violation\ConstraintViolationBuilderInterface;
@@ -62,7 +62,7 @@ class SetTypeValidatorTest extends \PHPUnit_Framework_TestCase
     /**
      * Test that creation of SET Constraint When type class actually does't exist throws Exception
      *
-     * @expectedException \Okapon\DoctrineSetTypeBundle\Exception\TargetClassNotExistException
+     * @expectedException \Raksul\DoctrineSetTypeBundle\Exception\TargetClassNotExistException
      */
     public function testTargetIsSpecifiedByExistingClassNameExpected()
     {
@@ -83,7 +83,7 @@ class SetTypeValidatorTest extends \PHPUnit_Framework_TestCase
     public function testValidParam($param)
     {
         $constraint = new SetType([
-            'class' => 'Okapon\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType'
+            'class' => 'Raksul\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType'
         ]);
 
         $this->setTypeValidator->initialize($this->context);
@@ -117,7 +117,7 @@ class SetTypeValidatorTest extends \PHPUnit_Framework_TestCase
     public function testInvalidTypeParam()
     {
         $constraint = new SetType([
-            'class' => 'Okapon\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType'
+            'class' => 'Raksul\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType'
         ]);
 
         $this->setTypeValidator->initialize($this->context);
@@ -135,7 +135,7 @@ class SetTypeValidatorTest extends \PHPUnit_Framework_TestCase
         $this->context = Phake::mock('Symfony\Component\Validator\Context\ExecutionContext');
 
         $constraint = new SetType([
-            'class' => 'Okapon\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType'
+            'class' => 'Raksul\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType'
         ]);
 
         $message = 'One or more of the given values is invalid.';

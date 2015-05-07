@@ -1,17 +1,17 @@
 <?php
 
-namespace Okapon\DoctrineSetTypeBundle\Tests\DBAL\Types;
+namespace Raksul\DoctrineSetTypeBundle\Tests\DBAL\Types;
 
 use Doctrine\DBAL\Platforms\MySqlPlatform;
 use Doctrine\DBAL\Types\Type;
-use Okapon\DoctrineSetTypeBundle\DBAL\Types\AbstractSetType;
+use Raksul\DoctrineSetTypeBundle\DBAL\Types\AbstractSetType;
 
 /**
  * AbstractSetTypeTest
  *
  * @author Yuichi Okada <yuuichi177@gmail.com>
  *
- * @coversDefaultClass \Okapon\DoctrineSetTypeBundle\DBAL\Types\AbstractSetType
+ * @coversDefaultClass \Raksul\DoctrineSetTypeBundle\DBAL\Types\AbstractSetType
  */
 class AbstractSetTypeTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,7 +22,7 @@ class AbstractSetTypeTest extends \PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        Type::addType('UserGroupType', '\Okapon\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType');
+        Type::addType('UserGroupType', '\Raksul\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType');
     }
 
     public function setUp()

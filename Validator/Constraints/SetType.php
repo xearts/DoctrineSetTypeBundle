@@ -1,6 +1,6 @@
 <?php
 
-namespace Okapon\DoctrineSetTypeBundle\Validator\Constraints;
+namespace Raksul\DoctrineSetTypeBundle\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraints\Choice;
 

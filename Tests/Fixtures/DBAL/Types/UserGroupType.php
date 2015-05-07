@@ -1,8 +1,8 @@
 <?php
 
-namespace Okapon\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types;
+namespace Raksul\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types;
 
-use Okapon\DoctrineSetTypeBundle\DBAL\Types\AbstractSetType;
+use Raksul\DoctrineSetTypeBundle\DBAL\Types\AbstractSetType;
 
 class UserGroupType extends AbstractSetType
 {

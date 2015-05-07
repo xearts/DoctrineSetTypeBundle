@@ -1,6 +1,6 @@
 <?php
 
-namespace Okapon\DoctrineSetTypeBundle\Exception;
+namespace Raksul\DoctrineSetTypeBundle\Exception;
 
 class InvalidClassSpecifiedException extends \LogicException
 {

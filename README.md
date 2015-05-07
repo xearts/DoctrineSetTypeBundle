@@ -53,7 +53,7 @@ class AppKernel extends Kernel
         $bundles = array(
             // ...
 
-            new Okapon\DoctrineSetTypeBundle\OkaponDoctrineSetTypeBundle(),
+            new Raksul\DoctrineSetTypeBundle\RaksulDoctrineSetTypeBundle(),
         );
 
         // ...
@@ -90,7 +90,7 @@ Then, create UserGroupType and extend AbstractSetType.
 
 namespace AppBundle\DBAL\Types;
 
-use Okapon\DoctrineSetTypeBundle\DBAL\Types\AbstractSetType;
+use Raksul\DoctrineSetTypeBundle\DBAL\Types\AbstractSetType;
 
 class UserGroupType extends AbstractSetType
 {
@@ -137,7 +137,7 @@ namespace AppBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
-use Okapon\DoctrineSetTypeBundle\Validator\Constraints as DoctrineAssert;
+use Raksul\DoctrineSetTypeBundle\Validator\Constraints as DoctrineAssert;
 use AppBundle\DBAL\Types\UserGroupType;
 
 /**
