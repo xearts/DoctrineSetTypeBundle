@@ -239,3 +239,9 @@ CREATE TABLE user (
     PRIMARY KEY(id)
 ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB
 ```
+
+### License
+
+This bundle is under the MIT license. see LICENSE:
+
+[LICENSE](https://github.com/raksul/DoctrineSetTypeBundle/blob/master/LICENSE)
