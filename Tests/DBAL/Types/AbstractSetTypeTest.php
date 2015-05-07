@@ -9,7 +9,7 @@ use Raksul\DoctrineSetTypeBundle\DBAL\Types\AbstractSetType;
 /**
  * AbstractSetTypeTest
  *
- * @author Yuichi Okada <yuuichi177@gmail.com>
+ * @author Yuichi Okada <y.okada@raksul.com>
  *
  * @coversDefaultClass \Raksul\DoctrineSetTypeBundle\DBAL\Types\AbstractSetType
  */

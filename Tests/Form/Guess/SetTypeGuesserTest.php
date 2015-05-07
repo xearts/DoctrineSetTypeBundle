@@ -8,7 +8,7 @@ use Phake;
 /**
  * SetTypeGueserTest
  *
- * @author Yuichi Okada <yuuichi177@gmail.com>
+ * @author Yuichi Okada <y.okada@raksul.com>
  */
 class SetTypeGuesserTest extends \PHPUnit_Framework_TestCase
 {

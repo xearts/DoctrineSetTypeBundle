@@ -11,7 +11,7 @@ use Raksul\DoctrineSetTypeBundle\Exception\TargetClassNotExistException;
 /**
  * SetTypeValidator
  *
- * @author Yuichi Okada <yuuichi177@gmail.com>
+ * @author Yuichi Okada <y.okada@raksul.com>
  */
 class SetTypeValidator extends ChoiceValidator
 {

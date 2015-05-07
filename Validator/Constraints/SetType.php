@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * SET type constraint
  *
- * @author Yuichi Okada <yuuichi177@gmail.com>
+ * @author Yuichi Okada <y.okada@raksul.com>
  *
  * @Annotation
  */

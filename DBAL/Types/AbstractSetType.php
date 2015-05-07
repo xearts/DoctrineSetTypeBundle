@@ -10,7 +10,7 @@ use Doctrine\DBAL\Types\Type;
  *
  * Provides MySQL Set type for Doctrine in Symfony applications
  *
- * @author Yuichi Okada <yuuichi177@gmail.com>
+ * @author Yuichi Okada <y.okada@raksul.com>
  */
 abstract class AbstractSetType extends Type
 {

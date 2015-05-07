@@ -12,7 +12,7 @@ use Raksul\DoctrineSetTypeBundle\Exception\InvalidClassSpecifiedException;
 /**
  * SetTypeGuesser
  *
- * @author Yuichi Okada <yuuichi177@gmail.com>
+ * @author Yuichi Okada <y.okada@raksul.com>
  */
 class SetTypeGuesser extends DoctrineOrmTypeGuesser
 {

@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints\Choice;
 /**
  * SetTypeValidatorTest
  *
- * @author Yuichi Okada <yuuichi177@gmail.com>
+ * @author Yuichi Okada <y.okada@raksul.com>
  */
 class SetTypeValidatorTest extends \PHPUnit_Framework_TestCase
 {
