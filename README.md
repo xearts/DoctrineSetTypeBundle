@@ -104,7 +104,7 @@ class UserGroupType extends AbstractSetType
      protected $name = 'UserGroupType'; // This is Optional. Automatically registered shord class name.
 
     /**
-     * define your SET type.
+     * Define your SET type.
      */
     protected static $choices = [
         self::GROUP1 => 'Group 1',
@@ -115,11 +115,13 @@ class UserGroupType extends AbstractSetType
 ```
 
 If you want to use return value of other class method to choices field, override getChoices method.
-```
+
+```php
 class UserGroupType extends AbstractSetType
 {
     public static function getChoices()
     {
+        // Return your SET type.
         return User::getGroups();
     }
 }
