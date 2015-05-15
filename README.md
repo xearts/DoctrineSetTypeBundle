@@ -119,6 +119,9 @@ If you want to use return value of other class method to choices field, override
 ```php
 class UserGroupType extends AbstractSetType
 {
+    /**
+     * {@inheritdoc}
+     */
     public static function getChoices()
     {
         // Return your SET type.
