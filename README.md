@@ -114,6 +114,17 @@ class UserGroupType extends AbstractSetType
 }
 ```
 
+If you want to use return value of other class method to choices field, override getChoices method.
+```
+class UserGroupType extends AbstractSetType
+{
+    public static function getChoices()
+    {
+        return User::getGroups();
+    }
+}
+```
+
 ### Register your type
 
 Register UserGroupType in `config.yml`
