@@ -2,12 +2,13 @@
 
 namespace Raksul\DoctrineSetTypeBundle\Tests\Validator;
 
+use Raksul\DoctrineSetTypeBundle\Exception\TargetClassNotExistException;
 use Raksul\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType;
 use Raksul\DoctrineSetTypeBundle\Validator\Constraints\SetType;
 use Raksul\DoctrineSetTypeBundle\Validator\Constraints\SetTypeValidator;
-use Symfony\Component\Validator\Context\ExecutionContext;
-use Phake;
-use Symfony\Component\Validator\Violation\ConstraintViolationBuilderInterface;
+use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
+use Symfony\Component\Validator\Exception\MissingOptionsException;
+use Symfony\Component\Validator\Tests\Constraints\AbstractConstraintValidatorTest;
 use Symfony\Component\Validator\Constraints\Choice;
 
 /**
@@ -15,95 +16,94 @@ use Symfony\Component\Validator\Constraints\Choice;
  *
  * @author Yuichi Okada <y.okada@raksul.com>
  */
-class SetTypeValidatorTest extends \PHPUnit_Framework_TestCase
+class SetTypeValidatorTest extends AbstractConstraintValidatorTest
 {
-    /**
-     * @var SetTypeValidator $setTypeValidator SET validator
-     */
-    private $setTypeValidator;
-
-    /**
-     * @var ExecutionContext|\PHPUnit_Framework_MockObject_MockObject $context Context
-     */
-    private $context;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setUp()
+    protected function createValidator()
     {
-        $this->setTypeValidator = new SetTypeValidator();
+        return new SetTypeValidator();
+    }
 
-        $this->context = Phake::mock('Symfony\Component\Validator\ExecutionContext');
+    public function testNullIsValid(): void
+    {
+        $constraint = new SetType([
+            'class' => UserGroupType::class
+        ]);
+        $this->validator->validate(null, $constraint);
+
+        $this->assertNoViolation();
+    }
+
+    public function testEmptyArrayIsValid(): void
+    {
+        $constraint = new SetType([
+            'class' => UserGroupType::class
+        ]);
+        $this->validator->validate([], $constraint);
+
+        $this->assertNoViolation();
     }
 
     /**
-     * @expectedException \Symfony\Component\Validator\Exception\MissingOptionsException
+     * @dataProvider validParamProvider
+     * @param array $param
      */
-    public function testTargetOptionExpected()
+    public function testValidSetArray($param): void
     {
+        $constraint = new SetType([
+            'class' => UserGroupType::class,
+        ]);
+        $this->validator->validate($param, $constraint);
+
+        $this->assertNoViolation();
+    }
+
+    public function testInvalidValue(): void
+    {
+        $constraint = new SetType([
+            'class' => UserGroupType::class,
+            'multipleMessage' => 'myMessage',
+        ]);
+
+        $this->validator->validate(['InvalidValue'], $constraint);
+
+        $this->buildViolation('myMessage')
+            ->setParameter('{{ value }}', '"InvalidValue"')
+            ->setCode(Choice::NO_SUCH_CHOICE_ERROR)
+            ->assertRaised();
+    }
+
+    public function testTargetOptionExpected(): void
+    {
+        $this->expectException(MissingOptionsException::class);
         new SetType();
     }
 
-    /**
-     * Test that creation of SET Constraint without type class throws ConstraintDefinitionException
-     *
-     * @expectedException \Symfony\Component\Validator\Exception\ConstraintDefinitionException
-     */
-    public function testTargetSpecifiedByClassNameExpected()
+    public function testThrowsExceptionIfNoClassSpecified(): void
     {
+        $this->expectException(ConstraintDefinitionException::class);
         $constraint = new SetType([
             'class' => null,
         ]);
 
-        $this->setTypeValidator->validate([UserGroupType::GROUP1], $constraint);
+        $this->validator->validate([UserGroupType::GROUP1], $constraint);
     }
 
-    /**
-     * Test that creation of SET Constraint When type class actually does't exist throws Exception
-     *
-     * @expectedException \Raksul\DoctrineSetTypeBundle\Exception\TargetClassNotExistException
-     */
-    public function testTargetIsSpecifiedByExistingClassNameExpected()
+    public function testThrowsExceptionIfNonExistentClassSpecified(): void
     {
+        $this->expectException(TargetClassNotExistException::class);
         $constraint = new SetType([
             'class' => 'NotExistClassName',
         ]);
 
-        $this->setTypeValidator->validate([UserGroupType::GROUP1], $constraint);
-    }
-
-    /**
-     * Test valid parameters
-     *
-     * Maybe fix this test from Symfony3.0
-     *
-     * @dataProvider testValidParamProvider
-     */
-    public function testValidParam($param)
-    {
-        $constraint = new SetType([
-            'class' => 'Raksul\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType'
-        ]);
-
-        $this->setTypeValidator->initialize($this->context);
-        $this->setTypeValidator->validate($param, $constraint);
-
-        Phake::verify($this->context, Phake::never())->addViolation(Phake::anyParameters());
+        $this->validator->validate([UserGroupType::GROUP1], $constraint);
     }
 
     /**
      * Data provider for method testValidParam
      */
-    public function testValidParamProvider()
+    public function validParamProvider(): array
     {
         return [
-            [
-                null,
-            ],
-            [
-                [],
-            ],
             [
                 [UserGroupType::GROUP1],
             ],
@@ -112,44 +112,5 @@ class SetTypeValidatorTest extends \PHPUnit_Framework_TestCase
             ],
         ];
 
-    }
-
-    public function testInvalidTypeParam()
-    {
-        $constraint = new SetType([
-            'class' => 'Raksul\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType'
-        ]);
-
-        $this->setTypeValidator->initialize($this->context);
-        $this->setTypeValidator->validate(['InvalidValue'], $constraint);
-
-        Phake::verify($this->context)->addViolation(Phake::anyParameters());
-    }
-
-    /**
-     * Test invalid Parameter for Symfony >=3.0
-     */
-    public function testInvalidParameterTypeForSymfony3()
-    {
-        // ExcecutionContext for Symfony ~3.0 @Since 2.5
-        $this->context = Phake::mock('Symfony\Component\Validator\Context\ExecutionContext');
-
-        $constraint = new SetType([
-            'class' => 'Raksul\DoctrineSetTypeBundle\Tests\Fixtures\DBAL\Types\UserGroupType'
-        ]);
-
-        $message = 'One or more of the given values is invalid.';
-
-        $constraintViolationBuilder = Phake::mock('Symfony\Component\Validator\Violation\ConstraintViolationBuilderInterface');
-        Phake::when($constraintViolationBuilder)->setParameter('{{ value }}', '"InvalidValue"')->thenReturn($constraintViolationBuilder);
-        Phake::when($constraintViolationBuilder)->setCode(Choice::NO_SUCH_CHOICE_ERROR)->thenReturn($constraintViolationBuilder);
-        Phake::when($constraintViolationBuilder)->setInvalidValue('InvalidValue')->thenReturn($constraintViolationBuilder);
-
-        Phake::when($this->context)->buildViolation($message, $parameters = [])->thenReturn($constraintViolationBuilder);
-
-        $this->setTypeValidator->initialize($this->context);
-        $this->setTypeValidator->validate(['InvalidValue'], $constraint);
-
-        Phake::verify($this->context)->buildViolation($message, $parameters = []);
     }
 }
