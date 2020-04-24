@@ -13,8 +13,15 @@
     ],
     "require": {
         "php": "^7.2",
-        "symfony/symfony": "~2.8|~3.0",
-        "doctrine/orm": "~2.3"
+        "doctrine/doctrine-bundle": "~1.11 || ^2.0",
+        "doctrine/common": "~2.8",
+        "doctrine/orm": "~2.6",
+        "symfony/config": "^4.3",
+        "symfony/dependency-injection": "^4.3",
+        "symfony/doctrine-bridge": "^4.3",
+        "symfony/framework-bundle": "^4.3",
+        "symfony/http-kernel": "^4.3",
+        "symfony/validator": "^4.3"
     },
     "require-dev": {
         "phake/phake": "^3.0",
